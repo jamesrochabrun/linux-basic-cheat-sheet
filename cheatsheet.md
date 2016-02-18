@@ -2,7 +2,9 @@ Linux Cheat sheet basic commnads
 
 Show Lists
 
-ls                            
+```
+ls     
+```
 Shows list of files 
 ls -l                         Shows list of files in a longer version<br>
 ls -a                         Shows list of all files (including dot files)<br>
