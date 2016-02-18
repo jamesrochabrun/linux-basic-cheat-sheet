@@ -2,15 +2,30 @@ Linux Cheat sheet basic commnads
 
 Show Lists
 
+Shows list of files 
 ```
 ls     
 ```
-Shows list of files 
-ls -l                         Shows list of files in a longer version<br>
-ls -a                         Shows list of all files (including dot files)<br>
-ls /directory                 Shows files inside a directory<br>
-ls -l /directory              Shows long list of the files inside a directory<br>
-clear                         clears the bash(shell/terminal)<br>
+Shows list of files in a longer version
+```
+ls -l  
+```
+Shows list of all files (including dot files)
+```
+ls -a    
+```
+Shows files inside a directory
+```
+ls /directory    
+```
+Shows long list of the files inside a directory
+```
+ls -l /directory   
+```
+Clears the bash(shell/terminal)
+```
+clear  
+```
 
 
 Moving around the file system
