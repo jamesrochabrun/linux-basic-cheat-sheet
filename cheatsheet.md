@@ -1,6 +1,6 @@
 #Linux Cheat sheet basic commnads
 
-Show Lists
+##Show Lists
 
 Shows list of files 
 ```
