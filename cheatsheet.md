@@ -27,161 +27,360 @@ Clears the bash(shell/terminal)
 clear  
 ```
 
+##Moving around the file system
 
-Moving around the file system
+Print working directory, shows where are we e.g /home/user/desktop/directory
+```
+pwd 
+```
+Change to a directory called "directory"
+```
+cd directory     
+```
+Change to a directory called directoryA inside a directory called directory
+```
+cd  /directoryA/directoryB/  
+```
+Change to the root directory
+```
+cd ~ 
+```
+Change to a directory in one superior level
+```
+cd ..    
+```
+Change more than one directory level 
+```
+cd ../..   
+```
 
-pwd                           Print working directory, shows where are we e.g /home/user/desktop/directory<br>
-cd directory                  Change to a directory called "directory"<br>
-cd  /directoryA/directoryB/   Change to a directory called directoryA inside a directory called directory<br>
-cd ~                          Change to the root directory<br>
-cd ..                         Change to a directory in one superior level<br>
-cd ../..                      Change more than one directory level <br>
+##Reading files
 
+Prints out what’s inside a file
+```
+less file.txt     
+```
+Exit/escape from a file open with less
+```
+q    
+```
+Prints out multiple files e.g. cat file1.txt/ file2.txt 
+```
+cat  
+```
 
-Reading files
+##Edit files
 
-less file.txt                 Prints out what’s inside a file<br>
-q                             Exit/escape from a file open with less<br>
-cat                           Prints out multiple files e.g. cat file1.txt/ file2.txt <br>
+Creates a new file called file.txt, or acces to a existing file called file.txt
+```
+nano file.txt    
+```
+Text editor for UNIX
+```
+pico file.txt   
+```
+Exit/escape the text editor
+```
+control +  x      
+```
 
+##Renaming/moving   files/directories
 
-Edit files
+This changes the name of oldname.txt to newname.txt
 
-nano file.txt                 Creates a new file called file.txt, or acces to a existing file called file.txt<br>
-pico file.txt                 text editor for UNIX<br>
-control +  x                  Exit/escape the text editor<br>
+```
+mv oldname.txt  newname.txt 
+```
+Move a file called “filename” in a directory called "directory" in our current directory (dont forget the dot)
+```
+mv directory/filename .  
+```
 
+##IMPORTANT : mv works depending where you are, for example if you are in desktop$ and want to move a file in other folder in your same tree level, yo can :
 
-Renaming/moving   files/directories
+This moves a file called "file.txt " in the desktop directory in to a directory called "newdirectory"<br>
+```
+mv file.txt newdirectory/   
+```
 
-mv oldname.txt  newname.txt   This changes the name of oldname.txt to newname.txt<br>
-mv directory/filename .       Move a file called “filename” in a directory called "directory" in our current directory (dont forget the dot)<br>
+##Copying and deleting files/directories
 
-IMPORTANT : mv works depending where you are, for example if you are in desktop$ and want to move a file in other folder in your same tree level, yo can :
+This duplicate a directory called "originaldirectoryname" and gives it the name of "copydirectoryname"
+```
+cp -r originaldirectoryname copydirectorname    
+```
+This removes a file called "file.txt"
+```
+rm file.txt    
+```
+This removes a directory called "directory"
+```
+rm -r directory  
+```
 
-mv file.txt newdirectory/    This moves a file called "file.txt " in the desktop directory in to a directory called "newdirectory"<br>
+##Creating directories
 
+This creates a directoryA inside a directoryB
+```
+mkdir -p directoryA/directoryB 
+```
+This creates a new directory called "newdirectory" in our current location
+```
+mkdir -p newdirectory     
+```
 
-Copying and deleting files/directories
+##Creating users
 
-cp -r originaldirectoryname copydirectorname          This duplicate a directory called "originaldirectoryname" and gives it the name of "copydirectoryname"<br>
-rm file.txt                                           This removes a file called "file.txt"<br>
-rm -r directory                                       This removes a directory called "directory"<br>
+Shows current user
+```
+whoami     
+```
+This creates a new user called "newusername"
+```
+sudo adduser newusername      
+```
+Switch user
+```
+su newusrename   
+```
+Return to the last user
+```
+exit
+```
 
+##File permissions
 
-Creating directories
+Changes permission of a file or a directory<br>
+```
+chmod    
+```
++ gives acces to Others to Write in a file called file.txt
+```
+chmod O + W    file.txt    
+```
+- removes acces to ALL (user, group, others) to execute a file.txt
+```
+chmod -x file.txt    
+```
 
-mkdir -p directory1/directory2                        This creates a directoryA inside a directoryB<br>
-mkdir -p newdirectory                                 This creates a new directory called "newdirectory" in our current location<br>
+##Examples of changing permissions with octal numbers     r = 4          w = 2          x = 1             4+3+1 =7
 
+777 gives 100% acces to ALL(user,group and others) to read, write and excute a file called "file.txt"
+ ```
+chmod  777 file.txt
+```
+501 gives read and write permission to user, no permissions to group, and execute permission to others
+```
+chmod 501 file.txt               
+```
 
-Creating users
+##Changing user ownerships
 
-whoami                                                Shows current user<br>
-sudo adduser newusername                              This creates a new user called "newusername"<br>
-su newusrename                                        Switch user <br>
-exit                                                  Return to the last user<br>
+Act like a super user
+```
+sudo     
+```
+Changes file ownerships, sending files and their permissions to other user
+```
+chown     
+```
+We need to use sudo before chown, in orther to give the ownership of a file called "file.txt" to "otheruser"
+```
+sudo chown otheruser file.txt    
+```
+This change the ownership of a file called file.txt to otheruser and othergroup
+```
+sudo chown otheruser:othergroup file.txt       
+```
 
+##Processes
 
-File permissions
-
-chmod                                                 Changes permission of a file or a directory<br>
-chmod O + W    file.txt                               + gives acces to Others to Write in a file called file.txt<br>
-chmod -x file.txt                                     - removes acces to ALL (user, group, others) to execute a file.txt<br>
-
-
-Examples of changing permissions with octal numbers     r = 4          w = 2          x = 1             4+3+1 =7
-
-chmod  777 file.txt               777 gives 100% acces to ALL(user,group and others) to read, write and excute a file called "file.txt"<br>
-chmod 501 file.txt                501 gives read and write permission to user, no permissions to group, and execute permission to others<br> 
-
-Changing user ownerships
-
-sudo                                                  Act like a super user<br>
-chown                                                 Changes file ownerships, sending files and their permissions to other user<br>
-sudo chown otheruser file.txt                         We need to use sudo before chown, in orther to give the ownership of a file called "file.txt" to "otheruser"<br>
-sudo chown otheruser:othergroup file.txt              This change the ownership of a file called file.txt to otheruser and othergroup<br>
-
-
-Processes
-
-top                                 Lets the users see the processes that are currently executing (in real time)<br>
-?                                   For more options <br>
-q                                   For quit  <br> 
-ps                                  Lists all the processes<br>
-ps aux                              Lists all the processes and their status<br>
+Lets the users see the processes that are currently executing (in real time)
+```
+top 
+```
+For more options 
+```
+?   
+```
+For quit  
+```
+q  
+```
+Lists all the processes
+```
+ps    
+```
+Lists all the processes and their status
+```
+ps aux  
+```
   
+##Pausing and resuming a process
 
-Pausing and resuming a process
+Pauses a process e.g like when you are using the command top
+```
+ctrl + Z   
+```
+[1] + stopped nano file.txt --->  output that shows the job id, the current job , the status, the process and the file<br>
 
-ctrl + Z                            Pauses a process e.g like when you are using the command top<br>
-[1] + stopped nano file.txt --->  output that shows the job id, the current job , the status, the process and the file <br>
+Returns the recently paused process
+```
+fg   
+```
+Returns the job [1] 
+```
+fg 1  
+```
+Shows a list of all the paused processes
+```
+jobs                               
+```
 
-fg                                 Returns the recently paused process<br>
-fg 1                               Returns the job [1] <br>
-jobs                               Shows a list of all the paused processes<br>
+##Killing a process
 
+Kills the current process
+```
+ctrl + c   
+```
+Kills a process with an id 1234  IMMEDIATELY!
+```
+kill - 9  1234     
+```
+kills a process with an id 1234  IMMEDIATELY!
+```
+kill - kill  1234   
+```
+Kills a process with an id of 1234 in other terminal
+```
+kill 1234   
+```
+Stops a process with an id 1234 in other terminal
+```
+kill -stop  1234    
+```
 
-Killing a process
-
-ctrl + c                           Kills the current process<br>
-kill - 9  1234                     Kills a process with an id 1234  IMMEDIATELY!<br>
-kill - kill  1234                  kills a process with an id 1234  IMMEDIATELY!<br>
-kill 1234                          Kills a process with an id of 1234 in other terminal<br>
-kill -stop  1234                   Stops a process with an id 1234 in other terminal<br>
-
-
-Enviroment variables
+##Enviroment variables
 
 CREATING A VARIABLE :
-
+```
 newvariable = “this is a variable”  
+```
 
 ACCESING VARIABLES:
 
-env                               Shows all the variables in the current enviroment (shell)<br>
-$                                 Allow to use the variable e.g $newvariable <br>
-echo                              Returns or repeats any argument<br>
-echo $newvariable                 Returns the argument of a variable called "newvariable" <br>
-ps1                               Current prompt, can be modified as a variable e.g. ps1 = newprompt$<br>
-bash                              Creates a new shell, inside the shell ("a new session inside the current session")<br>
-exit                              Return to the last session<br>
+Shows all the variables in the current enviroment (shell)
+```
+env  
+```
+Allow to use the variable e.g $newvariable 
+```
+$  
+```
+Returns or repeats any argument
+```
+echo   
+```
+Returns the argument of a variable called "newvariable" 
+```
+echo $newvariable    
+```
+Current prompt, can be modified as a variable e.g. ps1 = newprompt$<
+```
+ps1     
+```
+Creates a new shell, inside the shell ("a new session inside the current session")
+```
+bash     
+```
+Return to the last session
+```
+exit
+```
 
-EXPORTING VARIABLES AND MAKE THEM ACCESIBLE IN OTHER SESSIONS:
+##EXPORTING VARIABLES AND MAKE THEM ACCESIBLE IN OTHER SESSIONS:
 
-export variable = “this is a variable”     Makes a variable called variable available in other shell/session<br>
+Make a variable called variable available in other shell/session
+```
+export variable = “this is a variable”     
+```
 
 PATH VARIABLE:
 
-echo $PATH                             Return directories<br>
-which echo                             Shows the location of a program e.g echo <br>
-which top                              Shows the location of a program e.g. top<br>
-export PATH=/home/username/bin:$PATH   Updates the path <br>
+Return the path of all your directories
+```
+echo $PATH    
+```
+Shows the location of a program e.g echo 
+```
+which echo    
+```
+Shows the location of a program e.g. top
+```
+which top    
+```
+Updates the path 
+```
+export PATH=/home/username/bin:$PATH   
+```
 
+##Find and Grep files/directories
 
+Locate a file/directory by name 
+```
+find  
+```
+Locate a file/directory by pattern
+```
+grep  
+```
+Locate in current directory(dot) a file called "file.txt"
+```
+find . -name “file.txt”   
+```
+Locate in directoryA and directoryB a file with the name "file.txt"
+```
+find directoryA directoryB -name “file.txt”   
+```
+Locate a file called "file" in every directory
+```
+find / -name “file” 
+```
+Locate the kewyword “or” in a file called "file.txt"
+```
+grep “or” file.txt    
+```
+Locate the line where the keyword “or” is in a file called "file.txt"
+```
+grep -n “or” file.txt      
+```
+-i "unlocks case sensitive"
+```
+grep -i “OR” file.txt      
+```
+Locate everything in a file called file.txt, that doesn’t contains “or”
+```
+grep -v “or” file.txt     
+```
 
-Find and Grep files/directories
+##Redirections
 
-find                                                 Locate a file/directory by name <br>
-grep                                                 Locate a file/directory by pattern<br>
-find . -name “file.txt”                              Locate in current directory(dot) a file called "file.txt"<br>
-find directoryA directoryB -name “file.txt”          Locate in directoryA and directoryB a file with the name "file.txt"<br>
-find / -name “file”                                  Locate a file called "file" in every directory<br>
-grep “or” file.txt                                   Locate the kewyword “or” in a file called "file.txt"<br>
-grep -n “or” file.txt                                Locate the line where the keyword “or” is in a file called "file.txt"<br>
-grep -i “OR” file.txt                                -i "unlocks case sensitive"<br>
-grep -v “or” file.txt                                Locate everything in a file called file.txt, that doesn’t contains “or”<br>
+This locates everything with the content “is” from a file called "file.txt", and sends it in a file called "newfile.txt" 
+```
+grep “is”  file.txt > newfile.txt      
+```
+This locates everything with the word “is” from a file called "file.txt", in a new file called "newfile.txt"  WITHOUT OVERWRITE ON IT, SENDING THIS CONTENT AT THE BOTTOM OF THE DOCUMENT`
+```
+grep “is”  file.txt >> newfile.txt    
+```
+This send all the list of errors associated to a search using find to a directory called /dev/null where everything disappear, so you can find a file called “filename” without displaying the list of errors.
+```
+find / -name “filename” 2> /dev/null   
+```
 
+##Pipes
 
-Redirections
-
-grep “is”  file.txt > newfile.txt         This locates everything with the content “is” from a file called "file.txt", and sends it in a file called "newfile.txt" <br>
-grep “is”  file.txt >> newfile.txt        This locates everything with the word “is” from a file called "file.txt", in a new file called "newfile.txt"  WITHOUT OVERWRITE ON IT, SENDING THIS CONTENT AT THE BOTTOM OF THE DOCUMENT<br>
-find / -name “filename” 2> /dev/null      This send all the list of errors associated to a search using find to a directory called /dev/null where everything disappear, so you can find a file called “filename” without displaying the list of errors.<br>
-
-Pipes
-
-A | B | C  The "easiest" way to understand how to use pipes is :
+A | B | C  <i>The "easiest" way to understand how to use pipes is :</i>
 
 Take the input of A and sends it as an output to B, which takes it as an input to display an output to C, then C takes that output and uses it as an input to output something... we can use as many pipes that we want.<br>
 The standard input is the keyword<br>
