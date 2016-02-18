@@ -96,7 +96,7 @@ Move a file called “filename” in a directory called "directory" in our curre
 mv directory/filename .  
 ```
 
-##IMPORTANT : mv works depending where you are, for example if you are in desktop$ and want to move a file in other folder in your same tree level, yo can :
+<b>IMPORTANT : mv works depending where you are, for example if you are in desktop$ and want to move a file in other folder in your same tree level, yo can :</b>
 
 This moves a file called "file.txt " in the desktop directory in to a directory called "newdirectory"<br>
 ```
@@ -163,7 +163,7 @@ chmod O + W    file.txt
 chmod -x file.txt    
 ```
 
-##Examples of changing permissions with octal numbers     r = 4          w = 2          x = 1             4+3+1 =7
+<i>Examples of changing permissions with octal numbers     r = 4          w = 2          x = 1             4+3+1 =7</i>
 
 777 gives 100% acces to ALL(user,group and others) to read, write and excute a file called "file.txt"
  ```
