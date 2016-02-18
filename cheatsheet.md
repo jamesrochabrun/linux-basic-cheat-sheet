@@ -1,4 +1,4 @@
-#Linux Cheat sheet basic commnads
+#Linux Cheat sheet basic commads
 
 ##Show Lists
 
