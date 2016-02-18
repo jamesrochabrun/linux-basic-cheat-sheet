@@ -1,186 +1,192 @@
 Linux Cheat sheet basic commnads
 
-Lists
-(ls) - Shows list of files 
-(ls -l) - shows list of files in more detail
-(ls -a) - Shows list of files including dot files (hide files)
-(ls /directory) - shows files inside a directory.
-(ls -l /directory) - Shows long list of the files in a directory
-(clear) - clears the bash(shell/terminal)
+Show Lists
+
+ls                            Shows list of files 
+ls -l                         Shows list of files in a longer version
+ls -a                         Shows list of all files (including dot files)
+ls /directory                 Shows files inside a directory.
+ls -l /directory              Shows long list of the files inside a directory
+clear                         clears the bash(shell/terminal)
 
 
 Moving around the file system
 
-(pwd) - print working directory, shows where are we e.g /home/user/desktop/directory
-(cd directory) - change directory 
-(cd  /directory1/directory2/) change directory inside a directory
-(cd ~) - change to home
-(cd ..) - change one directory up
-(cd ../..) - change more than one directory up
+pwd                           Print working directory, shows where are we e.g /home/user/desktop/directory
+cd directory                  Change to a directory called "directory"
+cd  /directoryA/directoryB/   Change to a directory called directoryA inside a directory called directory
+cd ~                          Change to the root directory
+cd ..                         Change to a directory in one superior level
+cd ../..                      Change more than one directory level 
 
 
 Reading files
 
-(less file.txt) - prints out what’s inside a file
-(q) - exit the file printed with less
-(cat) - prints out multiple file e.g. cat file1.txt/ file2.txt -similar to less-
+less file.txt                 Prints out what’s inside a file
+q                             Exit/escape from a file open with less
+cat                           Prints out multiple files e.g. cat file1.txt/ file2.txt 
 
 
 Edit files
 
-(nano file.txt)- creates a new file or acces to a file called file.txt
-(pico file.txt) - text editor for UNIX
-(control x) - exit the text editor
+nano file.txt                 Creates a new file called file.txt, or acces to a existing file called file.txt
+pico file.txt                 text editor for UNIX
+control +  x                  Exit/escape the text editor
+
 
 Renaming/moving   files/directories
 
-(mv file1.txt  file2.txt) - rename file1 in to file2
-(mv directory/filename . ) - moves the file “filename” in the directory in our current directory (dont forget to use a dot or a tilda~)
-dont forget that works relative to the path where you are, for example if you are in desktop and want to move a file in other folder in your same tree level, yo can mv file.txt folder/
+mv oldname.txt  newname.txt   This changes the name of oldname.txt to newname.txt
+mv directory/filename .       Move a file called “filename” in a directory called "directory" in our current directory (dont forget the dot)
+
+IMPORTANT : mv works depending where you are, for example if you are in desktop$ and want to move a file in other folder in your same tree level, yo can :
+
+mv file.txt newdirectory/    This moves a file called "file.txt " in the desktop directory in to a directory called "newdirectory"
 
 
-Copying and deleting  files/directories
+Copying and deleting files/directories
 
-(cp -r currentdirectoryname copydirectorname) - copies a directory and gives it a name to the copy.
-(rm file.txt ) - removes a existent file
+cp -r originaldirectoryname copydirectorname          This duplicate a directory called "originaldirectoryname" and gives it the name of "copydirectoryname"
+rm file.txt                                           This removes a file called "file.txt"
 (rm -r directory) - removes a directory
+
+
 Creating directories
 
-(mkdir -p directory1/directory2) - creates a directory2 inside a directory1
-(mkdir -p newdirectory) - creates a new directory in our current location
+mkdir -p directory1/directory2                        This creates a directoryA inside a directoryB
+mkdir -p newdirectory                                 This creates a new directory called "newdirectory" in our current location
 
 
 Creating users
 
-(whoami) - shows current user
-(sudo adduser newusername) - creates a new user
-(#useradd -m newusername) - creates a new user in UNIX
-(#passwd newusername) - sets a password for the new user
-(su newusrename) - switch user 
-(exit) - returns to the last user
+whoami                                                Shows current user
+sudo adduser newusername                              This creates a new user called "newusername"
+su newusrename                                        Switch user 
+exit                                                  Return to the last user
+
 
 File permissions
 
-
-                                                                   Who?
-
-User 				Group 				Other 
-
-                                                             permissions
-
-Read 				Write 				Exceute
-
-U 				G 				O
-rwx                                       rwx                                          rwx
+chmod                                                 Changes permission of a file or a directory
+chmod O + W    file.txt                               + gives acces to Others to Write in a file called file.txt
+chmod -x file.txt                                     - removes acces to ALL (user, group, others) to execute a file.txt
 
 
-(chmod) - changes permission of a file or a directory
-(chmod O + W    file.txt)  - + gives acces to Others to Write in a file called file.txt
-(chmod  -x file.txt) - - delete acces to ALL (user, group, others) to execute a file.txt)
+Examples of changing permissions with octal numbers     r = 4          w = 2          x = 1             4+3+1 =7
 
-  Changing permissions with octal numbers     r = 4          w = 2          x = 1             4+3+1 =7
+chmod  777 file.txt               777 gives 100% acces to ALL(user,group and others) to read, write and excute a file called "file.txt"
+chmod 501 file.txt                501 gives read and write permission to user, no permissions to group, and execute permission to others. 
 
-(chmod 777 file.txt) - gives 100% acces to ALL to read write and excute a file.txt
-(chmod 501 file.txt)- gives read and write permission to user, any permission to group, and execute permission to others.
+Changing user ownerships
 
-(chown) - Changes file ownerships, sending files and their permissions  to other users
-(sudo chown otheruser file.txt) - We need sudo, this “sends” a file called file.txt and its permissions to other user.
-(sudo chown otheruser:othergroup file.txt) - this change the ownership of a file called file.txt to otheruser and othergroup
-(sudo) - runs a command as a super user.
+sudo                                                  Act like a super user
+chown                                                 Changes file ownerships, sending files and their permissions to other user
+sudo chown otheruser file.txt                         We need to use sudo before chown, in orther to give the ownership of a file called "file.txt" to "otheruser"
+sudo chown otheruser:othergroup file.txt              This change the ownership of a file called file.txt to otheruser and othergroup
+
+
 Processes
 
-(top) - let the user see the processes that are currently executing in real time (updating)
-(Q) - quits 
-(?) - show options
-(ps) - show all the processes 
-(ps aux) - show all the processes in detail “we can see the process id)
+top                                 Lets the users see the processes that are currently executing (in real time).
+?                                   For more options 
+q                                   For quit   
+ps                                  Lists all the processes
+ps aux                              Lists all the processes and their status
   
 
-Pausing and resuming
+Pausing and resuming a process
 
-(ctrl + Z) - pauses a process e.g if we are editing a file with nano .
-[1] + stopped nano file.txt --->  output that shows the job id , the current job , the status, the process and the file 
-(fg) - return the recently paused process
-(fg 1) -  return the job [1] 
-(jobs) - shows a list of all the paused processes
-(programname  &) - runs a program in the backend
+ctrl + Z                            Pauses a process e.g like when you are using the command top
+[1] + stopped nano file.txt --->  output that shows the job id, the current job , the status, the process and the file 
+
+fg                                 Returns the recently paused process
+fg 1                               Returns the job [1] 
+jobs                               Shows a list of all the paused processes
 
 
 Killing a process
 
-(ctrl + c) - kills the process
-(kill 1234 ) - e.g kills a process with an id of 1234 in other terminal
-(kill - 9  1234) - e.g. kills a process with an id 1234  IMMEDIATELY!
-(kill - kill  1234) - e.g. kills a process with an id 1234  IMMEDIATELY!
-(kill -stop  1234) - stops a process with an id 1234 in other terminal.
+ctrl + c                           Kills the current process
+kill - 9  1234                     Kills a process with an id 1234  IMMEDIATELY!
+kill - kill  1234                  kills a process with an id 1234  IMMEDIATELY!
+kill 1234                          Kills a process with an id of 1234 in other terminal
+kill -stop  1234                   Stops a process with an id 1234 in other terminal
+
 
 Enviroment variables
 
-($) - sets the variable e.g $newvariable 
-(env) - shows all the variables in the enviroment (shell)
-(variable = “this is a variable”) - creating a variable call variable and setting a value.
-(echo) - returns a echo of a variable oranyting.
-(echo $variable) - returns “this is a variable”
-(ps1) - prompt , can be modified as a variable e.g. ps1 = newprompt 
-(bash) - creates a new shell inside the shell (a new session inside the current session)
-(exit) - return to the last session
-(export variable = “this is a variable”) - makes this variable available to other shell/session
-(echo $PATH) - return directories
-(which echo) - shows the location of a program e.g echo 
-(which top) - shows the location of a program e.g. top
-(export PATH=/home/username/bin:$PATH) - updates the path 
+CREATING A VARIABLE :
+
+newvariable = “this is a variable”  
+
+ACCESING VARIABLES:
+
+env                               Shows all the variables in the current enviroment (shell)
+$                                 Allow to use the variable e.g $newvariable 
+echo                              Returns or repeats any argument
+echo $newvariable                 Returns the argument of a variable called "newvariable" 
+ps1                               Current prompt, can be modified as a variable e.g. ps1 = newprompt$
+bash                              Creates a new shell, inside the shell ("a new session inside the current session")
+exit                              Return to the last session
+
+EXPORTING VARIABLES AND MAKE THEM ACCESIBLE IN OTHER SESSIONS:
+
+export variable = “this is a variable”     Makes a variable called variable available in other shell/session
+
+PATH VARIABLE:
+
+echo $PATH                             Return directories
+which echo                             Shows the location of a program e.g echo 
+which top                              Shows the location of a program e.g. top
+export PATH=/home/username/bin:$PATH   Updates the path 
 
 
 
 Find and Grep files/directories
 
-(find) - locate by name
-(grep) - locate by pattern
-(find . -name “file”) - find (dot) in current directory a file called file
-(find directoryA directoryB -name “file”) - find in directoryA and B a file called file
-(find / -name “file”) - find a a file called file in every directory
-(grep “is” file) - find the kewyword “is” i a file called file
-(grep -n “is” file) - find the line where the keyword “is” is in a file called file
-(grep -i “is” file) - i unlocks cas sensitive
-(grep -v “is” file) - find everything in a file called file , that doesn’t contain the keyword “is”
+find                                                 Locate a file/directory by name 
+grep                                                 Locate a file/directory by pattern
+find . -name “file.txt”                              Locate in current directory(dot) a file called "file.txt"
+find directoryA directoryB -name “file.txt”          Locate in directoryA and directoryB a file with the name "file.txt"
+find / -name “file”                                  Locate a file called "file" in every directory
+grep “or” file.txt                                   Locate the kewyword “or” in a file called "file.txt"
+grep -n “or” file.txt                                Locate the line where the keyword “or” is in a file called "file.txt"
+grep -i “OR” file.txt                                -i "unlocks case sensitive"
+grep -v “or” file.txt                                Locate everything in a file called file.txt, that doesn’t contains “or”
 
 
 Redirections
 
-(grep “is”  file.txt > newfile.txt) - this  puts everything with the keyword “is” from a file called file.txt , in a new file called newfile.txt 
-(grep “is”  file.txt >> newfile.txt) - this  puts everything with the keyword “is” from a file called file.txt , in a new file called newfile.txt WITHOUT OVERWRITE ON IT
-(find / -name “filename” 2> /dev/null)  - this send all the list of errors asociates to a search using find to a directory called /dev/null where everything disapear, and we can find a file called “filename” withou displaying the whole list of errors.
+grep “is”  file.txt > newfile.txt         This locates everything with the content “is” from a file called "file.txt", and sends it in a file called "newfile.txt" 
+grep “is”  file.txt >> newfile.txt        This locates everything with the word “is” from a file called "file.txt", in a new file called "newfile.txt"  WITHOUT OVERWRITE ON IT, SENDING THIS CONTENT AT THE BOTTOM OF THE DOCUMENT
+find / -name “filename” 2> /dev/null      This send all the list of errors associated to a search using find to a directory called /dev/null where everything disappear, so you can find a file called “filename” without displaying the list of errors.
 
 Pipes
 
-A | B | C … Pipes the input of A and sends it as an output to B which takes it as an input to display an output to C , C takes that output and uses it as an input to output something. we can use as many pipes that we want.
+A | B | C  The "easiest" way to understand how to use pipes is :
+
+Take the input of A and sends it as an output to B, which takes it as an input to display an output to C, then C takes that output and uses it as an input to output something... we can use as many pipes that we want.
 The standard input is the keyword
 The standard output is the terminal
 
 e.g.
 
-(ps aux  |   grep bash) - this shows all the procces and sends the data as an input to grep bash, then grep bash takes this data and search for a process with the keyowrd “bash”
-(sort) - sorts the lines of standard inputs and sends it to standards outputs.
-(ps aux | grep bash | sort) - this repeats the (ps aux |  grep bash ) command but shows the data sorted.
-(ps aux | grep bash | sort > newfile.txt) - this uses pipes and redirection to take the data of the command and send it to a file called newfile.txt
+ps aux  |  grep bash            This shows a list of  procceses(A) and sends this data as an input to the command "grep bash"(B), then 
+grep bash takes this lits and "greps" for bash
+
+sort                            This sorts the lines of standard inputs and sends it to standards outputs.
+
+e.g.
+
+ps aux | grep bash | sort       This repeats the (ps aux |  grep bash ) command but shows the data, sorted.
+
+
+Pipes and Redirections (the power of linux!)
+
+ps aux | grep bash | sort > newfile.txt   This uses pipes and redirection to take output of "ps aux" , use it as an input to "grep bash" which its going to send an outupt sorted in to a new file called "newfile.txt"
 
 
 
-
-
-
-Installing software with the package manager
-
-
-APT , advanced packaging tool (Linux)
-
-Steps :
-
-(sudo apt-get update) - this updates your packages 
-(apt - cache search git ) - this searches for a package called git
-(sudo apt-get install git ) - this installs a package called git
-(sudo apt-get upgrade) - this upgrades the packages
-(sudo apt-get remove git) - this removes a package called git 
 
 
 
