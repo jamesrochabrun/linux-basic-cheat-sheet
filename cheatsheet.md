@@ -262,12 +262,12 @@ kill -stop  1234
 
 ##Enviroment variables
 
-CREATING A VARIABLE :
+<i>CREATING A VARIABLE :</i>
 ```
 newvariable = “this is a variable”  
 ```
 
-ACCESING VARIABLES:
+<i>ACCESING VARIABLES:</i>
 
 Shows all the variables in the current enviroment (shell)
 ```
@@ -298,7 +298,7 @@ Return to the last session
 exit
 ```
 
-##EXPORTING VARIABLES AND MAKE THEM ACCESIBLE IN OTHER SESSIONS:
+<i>EXPORTING VARIABLES AND MAKE THEM ACCESIBLE IN OTHER SESSIONS:</i>
 
 Make a variable called variable available in other shell/session
 ```
@@ -382,25 +382,34 @@ find / -name “filename” 2> /dev/null
 
 A | B | C  <i>The "easiest" way to understand how to use pipes is :</i>
 
-Take the input of A and sends it as an output to B, which takes it as an input to display an output to C, then C takes that output and uses it as an input to output something... we can use as many pipes that we want.<br>
-The standard input is the keyword<br>
-The standard output is the terminal<br>
+<i>Take the input of A and sends it as an output to B, which takes it as an input to display an output to C, then C takes that output and uses it as an input to output something... we can use as many pipes that we want.<i><br>
+<i>The standard input is the keyword</i><br>
+<i>The standard output is the terminal</i><br>
 
-e.g.
+<i>e.g.</i>
 
-ps aux  |  grep bash            This shows a list of  procceses(A) and sends this data as an input to the command "grep bash"(B), then 
+This shows a list of  procceses(A) and sends this data as an input to the command "grep bash"(B), then 
 grep bash takes this lits and "greps" for bash<br>
+```
+ps aux  |  grep bash  
+```
 
-sort                            This sorts the lines of standard inputs and sends it to standards outputs<br>
+<i>sort, sorts the lines of standard inputs and sends it to standards outputs</i>
 
-e.g.
+<i>e.g.</i>
 
-ps aux | grep bash | sort       This repeats the (ps aux |  grep bash ) command but shows the data, sorted<br>
+This repeats the (ps aux |  grep bash ) command but shows the data, sorted
+```
+ps aux | grep bash | sort    
+```
 
+##Pipes and Redirections (the power of linux!)
 
-Pipes and Redirections (the power of linux!)
+This uses pipes and redirection to take output of "ps aux" , use it as an input to "grep bash" which its going to send an outupt sorted in to a new file called "newfile.txt"
 
-ps aux | grep bash | sort > newfile.txt   This uses pipes and redirection to take output of "ps aux" , use it as an input to "grep bash" which its going to send an outupt sorted in to a new file called "newfile.txt"
+```
+ps aux | grep bash | sort > newfile.txt 
+```
 
 
 
