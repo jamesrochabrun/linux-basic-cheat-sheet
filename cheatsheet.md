@@ -2,7 +2,7 @@ Linux Cheat sheet basic commnads
 
 Show Lists
 
-ls                            Shows list of files 
+ls                            Shows list of files <br>
 ls -l                         Shows list of files in a longer version
 ls -a                         Shows list of all files (including dot files)
 ls /directory                 Shows files inside a directory.
